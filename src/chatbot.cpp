@@ -21,7 +21,7 @@ ChatBot::ChatBot()
 ChatBot::ChatBot(std::string filename)
 {
     std::cout << "ChatBot Constructor" << std::endl;
-    
+
     // invalidate data handles
     _chatLogic = nullptr;
     _rootNode = nullptr;
@@ -44,6 +44,34 @@ ChatBot::~ChatBot()
 
 //// STUDENT CODE
 ////
+
+// Copy constructor
+ChatBot::ChatBot(const ChatBot& source) {
+  std::cout << "ChatBot Copy Constructor" << std::endl;
+  if(source._image != NULL)
+    {
+      _image = source._image;
+    }
+  _chatLogic = source._chatLogic;
+  _rootNode = source._rootNode;
+  return;
+}
+
+// Move constructor
+ChatBot::ChatBot(ChatBot&& source) {
+  std::cout << "ChatBot Move Constructor" << std::endl;
+  if(source._image != NULL)
+    {
+      _image = source._image;
+      delete source._image;
+      source._image = NULL;
+    }
+  _chatLogic = source._chatLogic;
+  _rootNode = source._rootNode;
+  _chatLogic = nullptr;
+  _rootNode = nullptr;
+  return;
+}
 
 ////
 //// EOF STUDENT CODE

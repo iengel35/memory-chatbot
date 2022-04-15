@@ -205,11 +205,12 @@ void ChatLogic::LoadAnswerGraphFromFile(std::string filename)
 
     // add pointer to chatlogic so that chatbot answers can be passed on to the GUI
     _chatBot = &local_bot;
-    _chatBot->SetChatLogicHandle(this);
+    local_bot.SetChatLogicHandle(this);
+    local_bot.SetRootNode(rootNode);
 
-    _chatBot->SetRootNode(rootNode);
+    std::cout << "moving local bot" << std::endl;
     rootNode->MoveChatbotHere(std::move(local_bot));
-
+    std::cout << "moved local bot" << std::endl;
     ////
     //// EOF STUDENT CODE
 }

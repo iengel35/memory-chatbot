@@ -105,14 +105,17 @@ ChatBot& ChatBot::operator=(ChatBot&& source) {
   if(source._image != NULL)
     {
       _image = source._image;
+      std::cout << "ChatBot Move Assignment 2" << std::endl;
     }
   _chatLogic = source._chatLogic;
   _rootNode = source._rootNode;
+  std::cout << "ChatBot Move Assignment 3"<< std::endl;
 
   _chatLogic->SetChatbotHandle(this);
   source._image = NULL;
   _chatLogic = nullptr;
   _rootNode = nullptr;
+  std::cout << "ChatBot Move Assignment 4" << std::endl;
   return *this;
 }
 
